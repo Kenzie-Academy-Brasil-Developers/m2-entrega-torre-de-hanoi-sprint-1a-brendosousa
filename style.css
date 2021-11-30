@@ -1,0 +1,51 @@
+/**
+    MOBILE FIRST
+*/
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+#main{
+    width: 80%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+
+.pino{
+    width: 30%;
+    height: 200px;
+    background-color: lightgray;
+    display: flex; 
+    flex-direction: column-reverse; 
+    align-items: center;
+}
+
+#pino1{
+
+}
+
+#pino2{
+
+}
+
+#pino3{
+
+}
+
+/**DESKTOP */
+@media screen and (min-width: 750px){
+
+    .pino{
+        width: 30%;
+        height: 300px;
+    }
+
+}    
