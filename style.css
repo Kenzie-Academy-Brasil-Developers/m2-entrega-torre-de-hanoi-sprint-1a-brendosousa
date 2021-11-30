@@ -70,15 +70,15 @@ h1{
     background-color: yellow;
     width: 250px;
 }
-.blue {
+.red {
     background-color: red;
     width: 200px;
 }
-.red {
+.green {
     background-color: green;
     width: 150px;
 }
-.green {
+.blue {
     background-color: blue;
     width: 100px;
 }

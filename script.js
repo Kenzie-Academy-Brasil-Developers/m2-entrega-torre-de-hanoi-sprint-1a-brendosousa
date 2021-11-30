@@ -1,5 +1,5 @@
 const main = document.getElementById('main');
-const nomesDiscos = ["yellow", "blue", "red", "green"]
+const nomesDiscos = ["yellow", "red", "green", "blue"]
 
 /**Função para criar os pinos dinamicamente com o DOM */
 
@@ -57,14 +57,27 @@ for (let i=0; i<torres.length; i++){
             disco = pegarDisco(e)
             disco.classList.add("selecionado")
         }
+        else if(temFilho>0){
+            let filho = pegarDisco(e)
+            let tamanhoDiscoAtual = disco.clientWidth
+            let tamanhoFilhoAtual = filho.clientWidth
+            if(tamanhoDiscoAtual<tamanhoFilhoAtual){
+                torre.appendChild(disco)
+                disco.classList.remove("selecionado")
+                disco = ""
+                torre = ""
+            }
+            else {
+                disco.classList.remove("selecionado")
+                disco = ""
+                torre = ""
+            }
+        }
         else if(disco!==""){
-            console.log(torre)
-            console.log(disco.clientWidth)
             torre.appendChild(disco)
             disco.classList.remove("selecionado")
             disco = ""
             torre = ""
-        }
-        
+        }  
     })
 }
