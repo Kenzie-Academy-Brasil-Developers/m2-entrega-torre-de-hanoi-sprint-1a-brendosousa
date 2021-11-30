@@ -1,7 +1,5 @@
 const main = document.getElementById('main');
-
 const nomesDiscos = ["yellow", "blue", "red", "green"]
-const tamanho = [250,200,150,100]
 
 /**Função para criar os pinos dinamicamente com o DOM */
 
@@ -13,49 +11,59 @@ function criarPinos(){
         main.appendChild(pino);
     }
 }
-
 criarPinos();
 const torres = document.getElementsByClassName("pino")
 
 //função que cria os discos no primeiro pino
 function criarTorres(){
     for (let i=0; i<4; i++){
-    let criarDisco = document.createElement("li")
-    criarDisco.innerText = "disco"
-    let classeAtual = nomesDiscos[i]
-    let tamanhoAtual = tamanho[i]
-    criarDisco.classList.add(classeAtual)
-    criarDisco.style.backgroundColor = classeAtual
-    criarDisco.style.width = `${tamanhoAtual}px`
-    torres[0].appendChild(criarDisco)
+        let criarDisco = document.createElement("li")
+        criarDisco.innerText = `Disco ${i+1}`;
+        let classeAtual = nomesDiscos[i]
+        criarDisco.classList.add(classeAtual)
+        criarDisco.classList.add("disco")
+        criarDisco.id = `disco${i+1}`;
+        torres[0].appendChild(criarDisco)
     }
 }
-
 criarTorres()
 
+//função que seleciona o disco da torre clicada
 
-// function pegarDisco(event){
-//     let torreAtual = event.currentTarget
-//     let discoAtual = torreAtual.lastElementChild
-//     console.log(torreAtual)
-//     console.log(discoAtual)
-//     // if(discoAtual!==undefined){
-//     //     torreAtual.appendChild(discoAtual)
-//     // }
-//     return discoAtual
-// }
-// function soltarDisco(event){
-//     let torreAtual = event.currentTarget
-//     let discoPraSoltar = ""
-//     torreAtual.appendChild(discoPraSoltar)
-// }
+function pegarDisco(event){
+    let torreAtual = event.currentTarget
+    let discoAtual = torreAtual.lastElementChild
+    return discoAtual
+}
 
-// torre.addEventListener("click", function(e){
-//     let disco = pegarDisco(e)
-//     return disco
-// })
+//função que seleciona a torre clicada
+function pegarTorre(event){
+    let torreAtual = event.currentTarget
+    return torreAtual
+}
 
-// torre2.addEventListener("click", function(e){
-//     let disco = pegarDisco(e)
-//     return disco
-// })
+//variáveis que representam o pino atual e o disco atual
+let torre = ""
+let disco = ""
+
+//loop que adiciona a função que movimenta od discos entre os pinos
+for (let i=0; i<torres.length; i++){
+    let tower = torres[i]
+    tower.addEventListener("click", function(e){
+        torre = pegarTorre(e)
+        let temFilho = torre.childElementCount
+        if(temFilho>0 && disco === ""){
+            disco = pegarDisco(e)
+            disco.classList.add("selecionado")
+        }
+        else if(disco!==""){
+            console.log(torre)
+            console.log(disco.clientWidth)
+            torre.appendChild(disco)
+            disco.classList.remove("selecionado")
+            disco = ""
+            torre = ""
+        }
+        
+    })
+}
