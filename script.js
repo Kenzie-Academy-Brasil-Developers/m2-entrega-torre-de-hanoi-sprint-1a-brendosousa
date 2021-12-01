@@ -84,6 +84,7 @@ function moverDiscos(){
             
             if(i > 0 && tower.childElementCount == 4){
                 document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em reset para jogar novamente!'
+                //main.removeChild(tower);
             }
         })
 
