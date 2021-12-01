@@ -28,62 +28,39 @@ h1{
     align-items: center;
 }
 
-#pino1{
-
-}
-
-#pino2{
-
-}
-
-#pino3{
-
-}
-
 .disco{
     height: 10%;
     font-size: 70%;
     text-align: center;
     border-radius: 30px;
 }
-
-/*#disco1{
-    background-color: yellow;
-    width: 100%;
-}
-
-#disco2{
-    background-color: blue;
-    width: 80%;
-}
-
-#disco3{
-    background-color: red;
-    width: 60%;
-}
-
-#disco4{
-    background-color: green;
-    width: 40%;*/
     
 .yellow {
     background-color: yellow;
-    width: 250px;
+    width: 100%
 }
 .red {
     background-color: red;
-    width: 200px;
+    width: 80%;
 }
 .green {
     background-color: green;
-    width: 150px;
+    width: 60%;
 }
 .blue {
     background-color: blue;
-    width: 100px;
-}
+    width: 40%;
+}    
+
 .selecionado {
     background-color: orange;
+}
+
+.result{
+    font-size: 10px;
+    text-align: center;
+    color: blueviolet;
+    margin-top: 10px;
 }
 
 /**DESKTOP */
@@ -94,8 +71,8 @@ h1{
         height: 300px;
     }
 
-    .disco{
-        
+    .result{
+        font-size: 30px;
     }
 
 }    

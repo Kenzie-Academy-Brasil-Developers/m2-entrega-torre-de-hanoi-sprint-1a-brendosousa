@@ -20,10 +20,8 @@ function criarTorres(){
     for (let i=0; i<4; i++){
         let criarDisco = document.createElement("li")
         criarDisco.innerText = `Disco ${i+1}`;
-        let classeAtual = nomesDiscos[i]
-        criarDisco.classList.add(classeAtual)
+        criarDisco.classList.add(nomesDiscos[i])
         criarDisco.classList.add("disco")
-        criarDisco.id = `disco${i+1}`;
         torres[0].appendChild(criarDisco)
     }
 }
@@ -44,40 +42,53 @@ function pegarTorre(event){
 }
 
 //variáveis que representam o pino atual e o disco atual
-let torre = ""
-let disco = ""
+let torre = null;
+let disco = null;
 
-//loop que adiciona a função que movimenta od discos entre os pinos
-for (let i=0; i<torres.length; i++){
-    let tower = torres[i]
-    tower.addEventListener("click", function(e){
-        torre = pegarTorre(e)
-        let temFilho = torre.childElementCount
-        if(temFilho>0 && disco === ""){
-            disco = pegarDisco(e)
-            disco.classList.add("selecionado")
-        }
-        else if(temFilho>0){
-            let filho = pegarDisco(e)
-            let tamanhoDiscoAtual = disco.clientWidth
-            let tamanhoFilhoAtual = filho.clientWidth
-            if(tamanhoDiscoAtual<tamanhoFilhoAtual){
+//Função que movimenta os discos entre os pinos
+function moverDiscos(){
+    for (let i=0; i<torres.length; i++){
+        let tower = torres[i]
+        tower.addEventListener("click", function(e){
+            torre = pegarTorre(e)
+            let temFilho = torre.childElementCount
+            
+            if(temFilho>0 && disco === null){
+                disco = pegarDisco(e)
+                disco.classList.add("selecionado")
+            }
+            else if(temFilho>0){
+                let filho = pegarDisco(e)
+                let tamanhoDiscoAtual = disco.clientWidth
+                let tamanhoFilhoAtual = filho.clientWidth
+                if(tamanhoDiscoAtual<tamanhoFilhoAtual){
+                    torre.appendChild(disco)
+                    disco.classList.remove("selecionado")
+                    disco = null
+                    torre = null
+                }
+                else {
+                    disco.classList.remove("selecionado")
+                    disco = null
+                    torre = null
+                }
+            }
+            else if(disco!==null){
                 torre.appendChild(disco)
                 disco.classList.remove("selecionado")
-                disco = ""
-                torre = ""
+                disco = null
+                torre = null
             }
-            else {
-                disco.classList.remove("selecionado")
-                disco = ""
-                torre = ""
+            
+            //console.log(tower.childElementCount);
+            
+            if(i > 0 && tower.childElementCount == 4){
+                document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em reset para jogar novamente!'
             }
-        }
-        else if(disco!==""){
-            torre.appendChild(disco)
-            disco.classList.remove("selecionado")
-            disco = ""
-            torre = ""
-        }  
-    })
+        })
+
+    }
 }
+
+moverDiscos();
+
