@@ -84,8 +84,8 @@ function moverDiscos(){
             //console.log(tower.childElementCount);
             
             if(i > 0 && tower.childElementCount == 4){
-                document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em reset para jogar novamente!'
-                //main.removeChild(tower);
+                document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em restar jogo para jogar novamente!'
+                
             }
         })
 
@@ -100,7 +100,7 @@ let num = 0
 
 function contarJogadas(){
     num = num+1
-    secaoContador.innerText = `você fez ${num} jogadas`
+    secaoContador.innerText = `Você fez ${num} jogadas`
 }
 
 //função que reseta o jogo
@@ -108,6 +108,7 @@ const botaoReset = document.getElementById("reset")
 const allDisks = document.getElementsByClassName("disco")
 
 function resetarTorre(){
+    document.getElementById('result').innerText = ""
     for(let i=0; i<allDisks.length; i++){
         let actualDisk = `disco${i+1}`
         let idAtual = document.getElementById(actualDisk)
