@@ -22,6 +22,7 @@ function criarTorres(){
         criarDisco.innerText = `Disco ${i+1}`;
         criarDisco.classList.add(nomesDiscos[i])
         criarDisco.classList.add("disco")
+        criarDisco.id = `disco${i+1}`;
         torres[0].appendChild(criarDisco)
     }
 }
@@ -93,3 +94,30 @@ function moverDiscos(){
 
 moverDiscos();
 
+//função que conta os movimentos
+let secaoContador = document.getElementById("contador")
+let num = 0
+
+function contarJogadas(){
+    num = num+1
+    secaoContador.innerText = `você fez ${num} jogadas`
+}
+
+//função que reseta o jogo
+const botaoReset = document.getElementById("reset")
+const allDisks = document.getElementsByClassName("disco")
+
+function resetarTorre(){
+    for(let i=0; i<allDisks.length; i++){
+        let actualDisk = `disco${i+1}`
+        let idAtual = document.getElementById(actualDisk)
+        torres[0].appendChild(idAtual)
+    }
+    secaoContador.innerText = ""
+    num=0
+    disco.classList.remove("selecionado")
+    disco=""
+    torre=""
+}
+
+botaoReset.addEventListener("click", resetarTorre)
