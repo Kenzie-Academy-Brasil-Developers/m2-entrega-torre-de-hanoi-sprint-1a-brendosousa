@@ -43,23 +43,29 @@ h2{
     
 .yellow {
     background-color: yellow;
+    color: yellow;
     width: 100%
 }
 .red {
     background-color: red;
+    color: red;
     width: 80%;
 }
 .green {
     background-color: green;
+    color: green;
     width: 60%;
 }
 .blue {
     background-color: blue;
+    color: blue;
     width: 40%;
 }    
 
 .selecionado {
-    background-color: orange;
+    background-color: #00FF7F;
+    color: #00FF7F;
+    transform: scale(1.04);
 }
 
 .result{
@@ -71,6 +77,10 @@ h2{
 
 .botao{
     order: 4;
+}
+
+#contador {
+    text-align: center;
 }
 
 /**DESKTOP */

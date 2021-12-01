@@ -64,6 +64,7 @@ function moverDiscos(){
                 let tamanhoFilhoAtual = filho.clientWidth
                 if(tamanhoDiscoAtual<tamanhoFilhoAtual){
                     torre.appendChild(disco)
+                    contarJogadas()
                     disco.classList.remove("selecionado")
                     disco = null
                     torre = null
@@ -76,6 +77,7 @@ function moverDiscos(){
             }
             else if(disco!==null){
                 torre.appendChild(disco)
+                contarJogadas()
                 disco.classList.remove("selecionado")
                 disco = null
                 torre = null
@@ -84,7 +86,7 @@ function moverDiscos(){
             //console.log(tower.childElementCount);
             
             if(i > 0 && tower.childElementCount == 4){
-                document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em restar jogo para jogar novamente!'
+                document.getElementById('result').innerText = 'Parabéns, você venceu! Clique em resetar jogo para jogar novamente!'
                 
             }
         })
